@@ -1,0 +1,45 @@
+package me.schoolsquidstudios.HelloWorld;
+
+import org.bukkit.ChatColor; import org.bukkit.command.Command; import org.bukkit.command.CommandSender; import org.bukkit.entity.Player; import org.bukkit.plugin.java.JavaPlugin;
+
+public class Main extends JavaPlugin {
+
+@Override
+public void onEnable() {
+	// startup
+	// reloads
+	// plugin reloads
+}
+
+@Override
+public void onDisable() {
+	// shutdown
+	// reloads
+	// plugin reloads
+}
+
+// /hello <-- Hello, Welcome to the Server
+
+public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+	if (label.equalsIgnoreCase("hello")) {
+		if (sender instanceof Player) {
+		// Player
+		Player player = (Player) sender;
+		if (player.hasPermission("hello.schoolsquidstudios.use")) {
+			player.sendMessage(ChatColor.YELLOW + "Hello, Welcome to the server");
+			player.sendMessage(ChatColor.AQUA + "If You Need More Help Type /Help");
+			return true;
+		}
+		player.sendMessage(ChatColor.RED + "You do not have permissoin!");
+		return true;
+	}
+	else {
+		// Console
+		sender.sendMessage("Welcome Console Admin");
+		return true;
+	}
+}
+		
+return false;
+}
+}
